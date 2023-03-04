@@ -2,23 +2,19 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './styles/App.css'
 import ListHeader from './components/ListHeader'
+import ListItem from './components/ListItem'
+import { GetTodos } from './Types'
+//Types
+
+
 const App = () => {
 
-  type User = {
-    id: number,
-    progress: number,
-    title: string,
-    user_email: string
-  }
+  const [tasks, setTasks] = useState<GetTodos["todos"] | null>(null)
 
-  type GetUsersData = {
-    data: User[]
-  }
-
-  const getData = async () => {
+  const getTodos = async () => {
     try {
-      const { data } = await axios.get<GetUsersData>('http://localhost:8000/todos')
-      console.log(data)
+      const { data } = await axios.get<GetTodos["todos"]>('http://localhost:8000/todos')
+      setTasks(data)
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.log('error message: ', error.message);
@@ -31,12 +27,27 @@ const App = () => {
   }
 
   useEffect(() => {
-    getData()
+    tasks ?? (
+      getTodos()
+    )
+
   }, [])
+
+  //Sort tasks by date
+  const sortedTasks = tasks?.sort((a, b) => (new Date(a.date)).getTime() - (new Date(b.date)).getTime())
 
   return (
     <div className="App">
-      <ListHeader></ListHeader>
+      <ListHeader />
+      {sortedTasks?.map((task) => {
+        return (
+          <div className='li-container'>
+            <ListItem key={task.id} task={task} />
+            <ListItem key={task.id} task={task} />
+            <ListItem key={task.id} task={task} />
+          </div>
+        )
+      })}
     </div>
   )
 }

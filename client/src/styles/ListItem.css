@@ -1,0 +1,27 @@
+.ListItem {
+    display: flex;
+    width: 100%;
+    color: white;
+    height: 10%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 5%;
+    margin: 4px 0px;
+    border-radius: 5px;
+}
+.ListItem:nth-child(odd) {
+    background-color: #2c5d63;
+    
+}
+.ListItem:nth-child(even) {
+    background-color: #254c52;
+}
+
+.li-edit:hover {
+    background-color: #a2c11c;;
+}
+
+.li-delete:hover {
+    background-color: red;
+}
+

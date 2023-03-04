@@ -1,1 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+
+/* MAIN PALETTE 
+
+*LIST HEADER 
+
+.first-color {  
+	background: #283739; 
+}
+
+*LIST ITEMS
+.second-color { 
+	background: #2c5d63; 
+}
+
+*?
+.third-color { 
+	background: #a2c11c; 
+}
+
+*BACKGROUND
+.fourth-color { 
+	background: #e0e0e0; 
+}
+*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+.App {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    background-color: #e0e0e0;
+}
+
+.App:only-child>* {
+    width: 60%;
+}
+
+.app-button {
+    background-color: #464a52;
+    color: white;
+    margin: 1px 5px;
+    padding: 5px 7px;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 1px 2px rgb(0 0 0 / 57%);
+}
+
+.li-container {
+    height: 80%;
+}
 
